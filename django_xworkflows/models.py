@@ -135,7 +135,7 @@ class StateField(models.Field):
                     raise exceptions.ValidationError(self.error_messages['invalid'])
             res = base.StateWrapper(state, self.workflow)
 
-        if res.state not in self.workflow.states:
+        if res.state.name not in self.workflow.states:
             raise exceptions.ValidationError(self.error_messages['invalid'])
 
         return res
